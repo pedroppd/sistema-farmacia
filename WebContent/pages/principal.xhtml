@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/modeloSistema.xhtml">
+	<ui:define name="menu">
+		<ui:include src="/includes/menu.xhtml" />
+    </ui:define>
+    
+    <ui:define name="conteudo">
+		<h:form id="frmprodutos">
+
+			<p:dataTable value="#{MBprodutos.itens}" var="item"
+				filteredValue="#{MBprodutos.itensFiltrados}"
+				emptyMessage="Nenhum registro encontrado :(" paginator="true"
+				rows="7" id="tbprodutos" widgetVar="tabprodutos">
+				<f:facet name="header">Lista de Produtos</f:facet>
+				<p:column headerText="Id" sortBy="#{item.id}" filterBy="#{item.id}">
+					<h:outputText value="#{item.id}" />
+				</p:column>
+
+				<p:column headerText="Descrição" sortBy="#{item.descricao}"
+					filterBy="#{item.descricao}">
+					<h:outputText value="#{item.descricao}" />
+				</p:column>
+				
+				<p:column headerText="Estoque" sortBy="#{item.qtd}"
+					filterBy="#{item.qtd}">
+					<h:outputText value="#{item.qtd}" />
+				</p:column>
+				
+				<p:column headerText="Preço" sortBy="#{item.preco}"
+					filterBy="#{item.preco}">
+					<h:outputText value="#{item.preco}" />
+				</p:column>
+				
+				<p:column headerText="ID-Fornecedores" sortBy="#{item.fornecedores}"
+					filterBy="#{item.fornecedores}">
+					<h:outputText value="#{item.fornecedores.descricao}" />
+				</p:column>
+				
+				
+				
+				
+				
+			
+            //Botão para chamar o dialog para inserir
+           
+			</p:dataTable>
+
+		</h:form>
+		</ui:define>
+</ui:composition>
